@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @book = Book.new
     @books = @user.books.page(params[:page]).reverse_order
   end
   
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
   
+
   private
   
   def user_params
