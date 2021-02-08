@@ -11,7 +11,7 @@
   <body>
     <% if user_signed_in? %>
      <li>
-       <%= link_to "Home", root_path %>
+       <%= link_to "Home" %>
        </li>
      <li>
        <%= link_to "Users" %>
@@ -20,7 +20,7 @@
        <%= link_to "Books" %>
        </li>
      <li>
-       <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+       <%= link_to "logout", destroy_user_session_path, method: :delete %>
        </li>
     <% else %>
       <li>
@@ -30,10 +30,10 @@
        <%= link_to "About", homes_about_path %>
        </li>
      <li>
-       <%= link_to "Sing up", new_user_registration_path %>
+       <%= link_to "sing up", new_user_registration_path %>
        </li>
      <li>
-       <%= link_to "Log in", new_user_session_path %>
+       <%= link_to "login", new_user_session_path %>
        </li>
     <% end%>
     <%= yield %>
