@@ -1,11 +1,13 @@
 <h1>User info</h1>
 <div class="profile-container">
   <h4 class="profile-name">name <%= @user.name %></h4>
+  <% if @user.id == current_user.id %>
+   <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <%= image_tag('') %>
+  <% end %>
 </div>
 
 <h1>New book</h1>
-<!-- form_with部分 -->
 <%= form_with model:@book, local:true do |f| %>
 
   <h4>Title</h4>

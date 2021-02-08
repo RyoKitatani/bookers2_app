@@ -1,0 +1,9 @@
+<h1>User info</h1>
+<%= form_with model: @user, local: true do |f| %>
+    <label for="inputname">Name</label><br>
+         <%= f.text_field :name, autofocus: true, id:"inputname"%><br>
+    <label for="inputimage-file">Image</label><br>
+        <%= f.text_field :name, autofocus: true, id:"inputn", placeholder:"name" %><br>
+    <label for="inputintroduction">introduction</label><br>
+        <%= f.text_area :introduction, autofocus: true, id:"inputintroduction" %><br>
+<% end %>
