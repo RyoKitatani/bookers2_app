@@ -1,3 +1,32 @@
+<h1>User info</h1>
+<div class="profile-container">
+  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+  <h4 class="profile-name">name <%= @user.name %></h4>
+  <h4 class="profile-introduction">introduction</h4>
+  <% if @user.id == current_user.id %>
+   <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+</div>
+
+<h1>New book</h1>
+<%= form_with model:@book, local:true do |f| %>
+     <% if @book.errors.any? %>
+         <div class="alert-danger">
+             <h2><%= @book.errors.count %> error prohibited this obj from being saved:</h2>
+             <ul>
+                 <% @book.errors.full_messages.each do |message| %>
+                 <li><%= message %></li>
+                 <% end %>
+             </ul>
+           </div>
+     <% end %>
+        <h4>Title</h4>
+            <%= f.text_field :title %>
+        <h4>Opinion</h4>
+            <%= f.text_area :body %><br>
+        <%= f.submit '投稿' %>
+<% end %>
+
 <h1>Books</h1>
 <table>
     <thread>

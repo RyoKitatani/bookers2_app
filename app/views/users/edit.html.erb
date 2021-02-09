@@ -1,5 +1,15 @@
 <h1>User info</h1>
 <%= form_with model: @user, local: true do |f| %>
+    <% if @user.errors.any? %>
+    <div class="alert-danger">
+        <h2><%= @user.errors.count %> error prohibited this obj from being saved:</h2>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
     <label for="inputname">Name</label><br>
         <%= f.text_field :name, autofocus: true, id:"inputname"%><br><br>
     <label for="inputImage">ProfileImage</label><br>
