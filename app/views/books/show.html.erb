@@ -4,11 +4,17 @@
     <% end %>
 </p>
 
+
+
 <h1>Book detail</h1>
 <table>
     <tbody>
             <tr>
-                <td><%= @book.title%></td>
+                <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+                <td>
+                    <%= link_to book_path do %>
+                    <%= @book.title%></td>
+                <% end %>
                 <td><%= @book.body %></td>
                 <% if @book.user == current_user %>
                     <td><%= link_to "Edit", edit_book_path(@book) %></td>
