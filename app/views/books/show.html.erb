@@ -8,20 +8,18 @@
 <h1>Book detail</h1>
 <table>
     <tbody>
-         <% @books.each do |book| %>
             <tr>
                 <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
                 <td>
                     <%= link_to book_path do %>
-                    <%= book.title%></td>
+                    <%= @book.title %></td>
                 <% end %>
-                <td><%= book.body %></td>
+                <td><%= @book.body %></td>
                 <% if @book.user == current_user %>
                     <td><%= link_to "Edit", edit_book_path(@book) %></td>
                     <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
                 <% end %>
                 </td>
             </tr>
-        <% end %>
     </tbody>
 </table>
