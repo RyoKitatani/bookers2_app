@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 
   def create
       @book = Book.new(book_params)
-      @book.user_id = current_user.id
+      @book.user_id = current_user.id@
       if @book.save
          flash[:notice] = "You have created book successfully."
          redirect_to book_path(@book.id)
@@ -31,12 +31,13 @@ class BooksController < ApplicationController
   end
 
   def index
+      @user = current_user
       @books = Book.page(params[:page]).reverse_order
   end
 
   def show
-      @user = current_user
       @book = Book.find(params[:id])
+      @books = Book.page(params[:page]).reverse_order
   end
 
   def destroy
