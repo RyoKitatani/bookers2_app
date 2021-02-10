@@ -4,22 +4,28 @@
     <% end %>
 </p>
 
+<%= render 'books/list', book: @book, user: @user %>
 
-<h1>Book detail</h1>
-<table>
+<div class="col-md-8 offset-md-1">
+    <h2>Book detail</h2>
+    <table class="table">
     <tbody>
-            <tr>
-                <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
-                <td>
-                    <%= link_to book_path do %>
-                    <%= @book.title %></td>
-                <% end %>
-                <td><%= @book.body %></td>
-                <% if @book.user == current_user %>
-                    <td><%= link_to "Edit", edit_book_path(@book) %></td>
-                    <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
-                <% end %>
-                </td>
-            </tr>
+        <tr>
+            <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %><br>
+            <%= @user.name %></td>
+            <td><%= link_to book_path do %><%= @book.title %></td>
+            <% end %>
+            <td><%= @book.body %></td>
+            <% if @book.user == current_user %>
+            <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %></td>
+            <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger" %>
+            <% end %>
+            </td>
+        </tr>
     </tbody>
-</table>
+    </table>
+</div>
+</div>
+</div>
+
+
