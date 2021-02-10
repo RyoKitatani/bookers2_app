@@ -11,7 +11,7 @@ class BooksController < ApplicationController
          redirect_to book_path(@book.id)
       else
         @user = current_user
-        @books = @user.books.page(params[:page]).reverse_order
+        @books = Book.all
         render :index
       end
   end
