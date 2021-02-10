@@ -38,8 +38,8 @@ class BooksController < ApplicationController
 
   def show
       @user = current_user
+      @book = Book.new
       @book = Book.find(params[:id])
-      @books = Book.page(params[:page]).reverse_order
   end
 
   def destroy

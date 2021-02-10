@@ -6,8 +6,8 @@
     <table class="table">
     <tbody>
         <tr>
-            <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %><br>
-            <%= link_to users_show_path do%><%= @user.name %></td>
+            <td><%= attachment_image_tag @user, :profile_image, size:'40x40', format: 'jpeg', fallback: "no_image.jpg" %><br>
+            <%= link_to user_path do%><%= @user.name %></td>
             <% end %>
             <td><%= link_to book_path do %><%= @book.title %></td>
             <% end %>
@@ -23,5 +23,3 @@
 </div>
 </div>
 </div>
-
-
