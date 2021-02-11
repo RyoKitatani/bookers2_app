@@ -7,5 +7,4 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update, :index]
     post "/users/:id" => "books#create"
     post "/books" => "books#create"
-    
 end
