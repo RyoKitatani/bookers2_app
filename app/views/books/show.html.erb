@@ -54,12 +54,9 @@
             <td colspan="5">
               <div id="error_explanation">
                   <% if @book_comment.errors.any? %>
-                     <h2><%= @book_comment.errors.count %> error prohibited this obj from being saved:</h2>
-                     <ul>
                           <% @book_comment.errors.full_messages.each do |message| %>
-                         <li><%= message %></li>
+                         <h2><%= message %></h2>
                           <% end %>
-                      </ul>
                  <% end %>
               </div>
               <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
