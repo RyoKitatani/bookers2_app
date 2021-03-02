@@ -31,15 +31,13 @@ class UsersController < ApplicationController
   end
   
   def follower
-    @book = Book.new
     @user = User.find(params[:id])
-    @users = @user.follower.all
+    @book = Book.new
   end
 
   def followed
-    @book = Book.new
     @user = User.find(params[:id])
-    @users = @user.followed.all
+    @book = Book.new
   end
   
   private
