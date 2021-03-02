@@ -10,7 +10,7 @@
         </tr>
     </thread>
     <tbody>
-        <% @user.following_user.where.not(id: current_user.id).each do |user| %>
+        <% @user.following_user.each do |user| %>
             <tr>
             <td>
                 <%= attachment_image_tag user, :profile_image, size: '40x40', fallback: "no_image.jpg"%>
