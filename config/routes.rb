@@ -3,11 +3,16 @@ Rails.application.routes.draw do
     get 'users/show'
     root to: 'homes#top'
     get "home/about" => "homes#about"
-    resources :users, only: [:show, :edit, :update, :index]
+    resources :users, only: [:show, :edit, :update, :index, ] 
     resources :books, only: [:create, :new, :index, :show, :destroy, :edit, :update] do
         resources :book_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
     end
+    
+    resources :books do
+        get :search, on: :collection
+    end
+    
     resources :users do
         get :follower, on: :member
         get :followed, on: :member
