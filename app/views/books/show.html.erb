@@ -6,52 +6,30 @@
     <table class="table">
     <tbody>
         <tr>
-            <td><%= link_to user_path(@book_detail.user.id) do %>
-            <%= attachment_image_tag @book_detail.user, :profile_image, size:'40x40', format: 'jpeg', fallback: "no_image.jpg" %><br>
-            <%= @book_detail.user.name %></td>
-            <% end %>
-            <td><%= link_to "#" do %><%= @book_detail.title %></td>
-            <% end %>
- 
-            <td><%= @book_detail.body %></td>
-            <td><% if @book_detail.favorited_by?(current_user) %>
-               <%= link_to book_favorites_path(@book), method: :delete do%>
-               ❤ <%= @book.favorites.count %>
-               <% end %>
-            <% else %>
-              <%= link_to book_favorites_path(@book), method: :post do %>
-               ♡ <%= @book_detail.favorites.count %> 
-              <% end %>
-            <% end %>
-            </td>
-            <td>
-              <%= link_to "コメント数: #{@book_detail.book_comments.count}", book_path(@book.id) %>
-            </td>
-            <% if @book_detail.user == current_user %>
-            <td><%= link_to "Edit", edit_book_path(@book_detail), class:"btn btn-sm btn-success" %></td>
-            <td><%= link_to "Destroy", book_path(@book_detail), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger" %>
-            <% end %>
-            </td>
-        </tr>
-          <%= render 'books/show', book: @book %>
-        <tr>
-            <td colspan="5">
-              <div id="error_explanation">
-                  <% if @book_comment.errors.any? %>
-                          <% @book_comment.errors.full_messages.each do |message| %>
-                         <h2><%= message %></h2>
-                          <% end %>
-                 <% end %>
-              </div>
-              <%= form_with(model:[@book, @book_comment], remote: true) do |f| %>
-              <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", size: "120x5", id:text %><br>
-              <%= f.submit "送信" %>
-            <% end %>
-            </td>
-        </tr>
-        </tr>
-    </tbody id="comment">
+          <td><%= link_to user_path(@book_detail.user.id) do %>
+          <%= attachment_image_tag @book_detail.user, :profile_image, size:'40x40', format: 'jpeg', fallback: "no_image.jpg" %><br>
+          <%= @book_detail.user.name %></td>
+          <% end %>
+          <td><%= link_to "#" do %><%= @book_detail.title %></td>
+          <% end %>
+
+          <td><%= @book_detail.body %></td>
+          <td id=<%="favorites_buttons#{@book_detail.id}"%>>
+            <%= render partial: 'favorites/favorite', locals: {book: @book_detail} %>
+          </td>
+          <td>
+            <%= link_to "コメント数: #{@book_detail.book_comments.count}", book_path(@book.id) %>
+          </td>
+          <% if @book_detail.user == current_user %>
+          <td><%= link_to "Edit", edit_book_path(@book_detail), class:"btn btn-sm btn-success" %></td>
+          <td><%= link_to "Destroy", book_path(@book_detail), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger" %>
+          <% end %>
+          </td>
+      </tr>
+    </tbody>
     </table>
-</div>
-</div>
+    <tbody>
+    <div id="comment">
+    <%= render partial: 'book_comments/book_comment', locals: {book: @book, book_comment: @book_comment} %>
+    </div>
 </div>

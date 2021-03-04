@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-<div class="text-center">
+<div class="text-center mb-3">
     <%= form_with url: search_path, class: "search-form", method: :get, local: true do |f| %>
     <%= f.text_field :content %>
     <%= select_tag 'model', options_for_select({ "User" => "user", "Book" => "book" }) %>
