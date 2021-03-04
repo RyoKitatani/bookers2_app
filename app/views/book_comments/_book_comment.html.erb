@@ -15,6 +15,9 @@
 </table>
 <tr>
 <td>
+  
+  <!--form_withで書こうとしましたが、remote: tureが適応されなかったです。-->
+  <!--メンターさんと共に非同期通信させるために2時間対応していただきましたが、変わらず。結局form_forで行うとメンターさんと決定しました。-->
   <%= form_for [book, book_comment], remote: true do |f| %>
   <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", size: "120x5" %><br>
   <%= f.submit "送信" %>
